@@ -1,3 +1,3 @@
-module dummy {
+module smallimage {
     requires java.base;
 }

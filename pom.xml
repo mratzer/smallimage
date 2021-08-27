@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>eu.marat</groupId>
-    <artifactId>dummy</artifactId>
+    <artifactId>smallimage</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -45,7 +45,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                eu.marrat.dummy.Dummy
+                                eu.marrat.smallimage.Worker
                             </mainClass>
                         </manifest>
                     </archive>
