@@ -1,4 +1,4 @@
-FROM my-base-image:15
+FROM my-base-image:16
 
 COPY app.jar /app/app.jar
 
