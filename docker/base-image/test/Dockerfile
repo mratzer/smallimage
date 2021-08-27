@@ -1,4 +1,6 @@
-FROM my-base-image:16
+ARG JAVA_VERSION
+
+FROM my-base-image:${JAVA_VERSION}
 
 COPY app.jar /app/app.jar
 

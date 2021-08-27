@@ -2,7 +2,7 @@
 
 export DOCKER_BUILDKIT=1
 
-JAVA_VERSION=16
+JAVA_VERSION=${1:-16}
 JAVA_MODULES=java.base
 
 IMAGE_NAME=my-base-image
