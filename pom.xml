@@ -59,7 +59,7 @@
                 <version>3.1.4</version>
                 <configuration>
                     <from>
-                        <image>docker://my-base-image:16</image>
+                        <image>docker://my-base-image:${java.version}</image>
                     </from>
                     <to>
                         <image>my-simple-app</image>
