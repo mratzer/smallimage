@@ -2,17 +2,20 @@
 
 export DOCKER_BUILDKIT=1
 
-JAVA_VERSION=${2:-16}
+FLAVOR_ALPINE=alpine
+FLAVOR_DISTROLESS=distroless
+
+DEFAULT_JAVA_VERSION=16
+
+JAVA_VERSION=${2:-$DEFAULT_JAVA_VERSION}
 JAVA_MODULES=java.base
 
-if [ "$1" == "alpine" ]; then
-  FLAVOR="alpine"
-  DOCKERFILE=Dockerfile-alpine
-elif [ "$1" == "distroless" ]; then
-  FLAVOR="distroless"
-  DOCKERFILE=Dockerfile-distroless
+if [ "$1" == $FLAVOR_ALPINE ]; then
+  FLAVOR=$FLAVOR_ALPINE
+elif [ "$1" == $FLAVOR_DISTROLESS ]; then
+  FLAVOR=$FLAVOR_DISTROLESS
 else
-  echo "Usage: ./build [alpine|distroless] (javaVersion)"
+  echo "Usage: ./build.sh $FLAVOR_ALPINE|$FLAVOR_DISTROLESS [javaVersion:$DEFAULT_JAVA_VERSION]"
   exit 1
 fi
 
@@ -23,7 +26,7 @@ IMAGE_TAG=$JAVA_VERSION-$FLAVOR
 
 docker build -t \
   $IMAGE_NAME:$IMAGE_TAG \
-  --file $DOCKERFILE \
+  --file Dockerfile-$FLAVOR \
   --build-arg JAVA_MODULES=$JAVA_MODULES \
   --build-arg JAVA_VERSION=$JAVA_VERSION \
   .
