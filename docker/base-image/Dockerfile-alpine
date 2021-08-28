@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:experimental
+
+ARG JAVA_VERSION
+ARG JAVA_IMAGE=adoptopenjdk/openjdk${JAVA_VERSION}:alpine
+ARG BASE_IMAGE=alpine:3
+
+
+# Create a minimal JRE with jlink with all necessary modules for our application
+# binutils is needed because JDK13+ needs its objcopy to perform --strip-debug
+# see: https://github.com/docker-library/openjdk/issues/351
+FROM $JAVA_IMAGE AS custom_jre
+
+ARG JAVA_MODULES
+
+RUN apk --update add --no-cache binutils \
+    && jlink \
+        --strip-debug \
+        --no-header-files \
+        --no-man-pages \
+        --compress=2 \
+        --output /opt/custom_jre \
+        --add-modules $JAVA_MODULES
+
+
+FROM ${BASE_IMAGE}
+
+ENV PATH=/opt/jre/bin
+
+
+COPY --from=custom_jre /opt/custom_jre /opt/jre
