@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:experimental
 
 ARG JAVA_VERSION
-ARG JAVA_IMAGE=adoptopenjdk/openjdk${JAVA_VERSION}:alpine
+ARG JAVA_IMAGE=openjdk:${JAVA_VERSION}-alpine
 ARG BASE_IMAGE=alpine:3
 
 

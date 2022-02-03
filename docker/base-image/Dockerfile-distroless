@@ -1,19 +1,15 @@
 # syntax=docker/dockerfile:experimental
 
 ARG JAVA_VERSION
-ARG JAVA_IMAGE=adoptopenjdk/openjdk${JAVA_VERSION}
+ARG JAVA_IMAGE=openjdk:${JAVA_VERSION}
 ARG BASE_IMAGE=gcr.io/distroless/base
 
 
-# Create a minimal JRE with jlink with all necessary modules for our application
-# binutils is needed because JDK13+ needs its objcopy to perform --strip-debug
-# see: https://github.com/docker-library/openjdk/issues/351
 FROM $JAVA_IMAGE AS custom_jre
 
 ARG JAVA_MODULES
 
-RUN apt-get update && apt-get install -y binutils \
-    && jlink \
+RUN jlink \
         --strip-debug \
         --no-header-files \
         --no-man-pages \
