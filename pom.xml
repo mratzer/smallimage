@@ -11,8 +11,8 @@
     <properties>
         <java.version>17</java.version>
 
-        <flavor>alpine</flavor>
-<!--        <flavor>distroless</flavor>-->
+<!--        <flavor>alpine</flavor>-->
+        <flavor>distroless</flavor>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -65,8 +65,7 @@
                         <image>docker://my-base-image:${java.version}-${flavor}</image>
                     </from>
                     <to>
-                        <image>my-simple-app</image>
-                        <tags>${java.version}-${flavor}</tags>
+                        <image>my-simple-app:${java.version}-${flavor}</image>
                     </to>
                     <container>
                         <format>OCI</format>
