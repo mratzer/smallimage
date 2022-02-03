@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:experimental
 
 ARG JAVA_VERSION
-ARG JAVA_IMAGE=openjdk:${JAVA_VERSION}
+ARG JAVA_IMAGE=eclipse-temurin:${JAVA_VERSION}
 ARG BASE_IMAGE=gcr.io/distroless/base
 
 
