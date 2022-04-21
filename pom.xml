@@ -14,6 +14,9 @@
 <!--        <flavor>alpine</flavor>-->
         <flavor>distroless</flavor>
 
+        <baseImageName>my-base-image</baseImageName>
+        <appImageName>my-simple-app</appImageName>
+
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
@@ -62,10 +65,10 @@
                 <version>3.2.1</version>
                 <configuration>
                     <from>
-                        <image>docker://my-base-image:${java.version}-${flavor}</image>
+                        <image>docker://${baseImageName}:${java.version}-${flavor}</image>
                     </from>
                     <to>
-                        <image>my-simple-app:${java.version}-${flavor}</image>
+                        <image>${appImageName}:${java.version}-${flavor}</image>
                     </to>
                     <container>
                         <format>OCI</format>
