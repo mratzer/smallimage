@@ -2,7 +2,7 @@
 
 ARG JAVA_VERSION
 ARG JAVA_IMAGE=eclipse-temurin:${JAVA_VERSION}-alpine
-ARG BASE_IMAGE=alpine:3
+ARG BASE_IMAGE=alpine:3.18.0
 
 
 # Create a minimal JRE with jlink with all necessary modules for our application
