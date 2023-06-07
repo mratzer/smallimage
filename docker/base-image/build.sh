@@ -18,7 +18,7 @@ else
   echo "
   Examples:
       ./build.sh $FLAVOR_ALPINE               -> $DEFAULT_IMAGE_NAME:$DEFAULT_JAVA_VERSION-$FLAVOR_ALPINE
-      ./build.sh $FLAVOR_DISTROLESS 18 foobar -> foobar:18-$FLAVOR_DISTROLESS"
+      ./build.sh $FLAVOR_DISTROLESS 20 foobar -> foobar:20-$FLAVOR_DISTROLESS"
   exit 1
 fi
 
