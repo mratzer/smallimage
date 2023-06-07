@@ -23,13 +23,13 @@ RUN jlink \
 # Alpine is used as base image here because of its package manager (for curl etc.)
 FROM alpine AS libz_download
 
-RUN apk --update add --no-cache ca-certificates curl openssl xz \
-    && ZLIB_URL="https://archive.archlinux.org/packages/z/zlib/zlib-1%3A1.2.11-4-x86_64.pkg.tar.xz" \
-    && ZLIB_SHA256=43a17987d348e0b395cb6e28d2ece65fb3b5a0fe433714762780d18c0451c149 \
-    && curl -Ls ${ZLIB_URL} -o /tmp/libz.tar.xz \
-    && echo "${ZLIB_SHA256}  /tmp/libz.tar.xz" | sha256sum -c - \
+RUN apk --update add --no-cache ca-certificates curl openssl xz tar zstd \
+    && ZLIB_URL="https://archive.archlinux.org/packages/z/zlib/zlib-1%3A1.2.13-2-x86_64.pkg.tar.zst" \
+    && ZLIB_SHA256=c4f394724b20b84d7304b23bbb58442b6ef53e5cbac89eb51e39d7f0a46abafd \
+    && curl -Ls ${ZLIB_URL} -o /tmp/libz.tar.zst \
+    && echo "${ZLIB_SHA256}  /tmp/libz.tar.zst" | sha256sum -c - \
     && mkdir /tmp/libz \
-    && tar -xf /tmp/libz.tar.xz -C /tmp/libz
+    && tar --use-compress-program=unzstd -xf /tmp/libz.tar.zst -C /tmp/libz
 
 FROM ${BASE_IMAGE}
 
