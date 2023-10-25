@@ -2,7 +2,7 @@
 
 ARG JAVA_VERSION
 ARG JAVA_IMAGE=eclipse-temurin:${JAVA_VERSION}
-ARG BASE_IMAGE=gcr.io/distroless/base-debian11
+ARG BASE_IMAGE=gcr.io/distroless/base-debian12:latest
 
 
 FROM $JAVA_IMAGE AS custom_jre
